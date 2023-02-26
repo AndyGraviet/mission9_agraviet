@@ -30,6 +30,11 @@ namespace mission9_agraviet.Controllers
 		public PageInfo PageModel { get; set; }
 		public string PageAction { get; set; }
 
+		public bool PageClassesEnabled { get; set; } = false;
+		public string PageClass { get; set; }
+		public string PageClassNormal { get; set; }
+		public string PageClassSelected { get; set; }
+
         public override void Process(TagHelperContext thc, TagHelperOutput tho)
         {
 			IUrlHelper uh = uhf.GetUrlHelper(vc);
@@ -42,7 +47,12 @@ namespace mission9_agraviet.Controllers
 
 				tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
 				tb.InnerHtml.Append(i.ToString());
-				tb.AddCssClass("ml-4");
+				//apply bootstrap styles from the textbook
+				if (PageClassesEnabled)
+				{
+					tb.AddCssClass(PageClass);
+					tb.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+				}
 
 				final.InnerHtml.AppendHtml(tb);
 			}

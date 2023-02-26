@@ -17,6 +17,7 @@
     <None Remove="Infrastructure\" />
     <None Remove="Models\ViewModels\" />
     <None Remove="bootstrap" />
+    <None Remove="Twitter.Bootstrap" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
