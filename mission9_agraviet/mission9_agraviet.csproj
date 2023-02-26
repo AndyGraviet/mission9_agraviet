@@ -10,6 +10,16 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.22" />
+    <PackageReference Include="bootstrap" Version="3.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Infrastructure\" />
+    <None Remove="Models\ViewModels\" />
+    <None Remove="bootstrap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Models\ViewModels\" />
+  </ItemGroup>
 </Project>

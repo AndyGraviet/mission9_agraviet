@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using mission9_agraviet.Models;
+using mission9_agraviet.Models.ViewModels;
 
 namespace mission9_agraviet.Controllers
 {
@@ -21,9 +22,23 @@ namespace mission9_agraviet.Controllers
             repo = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNum = 1)
         {
-            var books = repo.Books.ToList();
+            int pageSize = 10;
+
+            var books = new BooksViewModel
+            {
+                Books = repo.Books
+                .OrderBy(p => p.Title)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+                PageInfo = new PageInfo
+                {
+                    TotalNumBooks = repo.Books.Count(),
+                    BooksPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
             return View(books);
         }
 
