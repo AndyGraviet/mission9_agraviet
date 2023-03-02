@@ -5,38 +5,10 @@
 @model BooksViewModel
 
 <div class="text-center">
-    <h1 class="display-4">Books</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <td>Title</td>
-                <td>Author</td>
-                <td>Publisher</td>
-                <td>ISBN</td>
-                <td>Classification</td>
-                <td>Category</td>
-                <td>Pagecount</td>
-                <td>Price</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Book b in Model.Books)
-            {
-                <tr>
-                    <td>@b.Title</td>
-                    <td>@b.Author</td>
-                    <td>@b.Publisher</td>
-                    <td>@b.Isbn</td>
-                    <td>@b.Classification</td>
-                    <td>@b.Category</td>
-                    <td>@b.PageCount</td>
-                    <td>@b.Price</td>
-                </tr>
-            }
-        </tbody>
-
-    </table>
+        @foreach (Book b in Model.Books)
+        {
+            <partial name="BookSummary" model="b"/>
+        }
     <div page-model="@Model.PageInfo" page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
 </div>
 
-<!--THIS IS BRANCH FOR MISSION 10-->
