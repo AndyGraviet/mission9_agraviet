@@ -31,6 +31,12 @@ namespace mission9_agraviet
                 options.UseSqlite(Configuration["ConnectionStrings:dbConnection"]);
             });
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +54,7 @@ namespace mission9_agraviet
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -73,6 +79,8 @@ namespace mission9_agraviet
 
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
              });
         }
     }

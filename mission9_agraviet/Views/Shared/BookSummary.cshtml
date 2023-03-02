@@ -4,11 +4,11 @@
 
 @model Book
 
-<div class="card card-outline-primary m-1 p-1">
+<div class="card card-outline-primary m-1 p-1 rounded-lg shadow">
     <div class="bg-light p-1">
         <h4 style="float:left">@Model.Title</h4>
         <span class="badge bg-primary" style="float:right">
-            <p class="text-white text-justify">Publisher: @Model.Publisher <br/><br /> ISBN: @Model.Isbn</p>
+            <p class="text-white text-justify">Publisher: @Model.Publisher <br /><br /> ISBN: @Model.Isbn</p>
         </span>
     </div>
     <ul style="float:left" class="list-group list-group-flush">
@@ -18,5 +18,13 @@
         <li class="list-group-item text-left">@Model.PageCount</li>
         <li class="list-group-item text-left">@Model.Price</li>
     </ul>
+    <form method="post" asp-page="/Purchase">
+        <input type="hidden" asp-for="@Model.BookId"/>
+        <input type="hidden" name="returnURL" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm mt-1" style="float:right">Add to Cart</button>
+        </span>
+    </form>
 </div>
+
 <br />

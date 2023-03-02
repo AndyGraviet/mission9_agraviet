@@ -17,12 +17,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1 container-fluid">
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item" style="float:right">
-                            <a class="nav-link text-dark" asp-page="/Purchase" style="float:right">View Cart</a>
                         </li>
                     </ul>
                 </div>
@@ -30,13 +27,8 @@
         </nav>
     </header>
     <div class="row m-1 p-1">
-        <div id="types" class="col-3">
-            <vc:categories></vc:categories>
-        </div>
-        <div class="col-9">
-            <div>
-                @RenderBody()
-            </div>
+        <div>
+            @RenderBody()
         </div>
     </div>
 
